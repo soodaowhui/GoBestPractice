@@ -3,7 +3,7 @@
 ### panic和合适的recover机制
 
 
-一般来说，为了反正panic错误发生时程序全部退出，我们会使用recover，并在recover中记录错误详情：
+一般来说，为了防止panic错误发生时程序全部退出，我们会使用recover，并在recover中记录错误详情：
 
 ```
 func main()  { 
