@@ -39,3 +39,44 @@ func TestSomething(t *testing.T) {
 }
 ```
 
+## 表格式测试
+
+一般用于分支多，需要测试的样例多，但是没有IO依赖的纯逻辑型函数
+
+假设我们有一个简单的substring函数
+
+```
+// 在str中截取到substr之前为止，如果没有substr则返回原字符串
+func SubString(str string, substr string) string {
+	index := strings.Index(str, substr)
+	if index >= 0 {
+		return str[0:index]
+	} else {
+		return str
+	}
+}
+```
+
+定义一个cases结构数组来容纳数量众多的test case
+
+```
+func TestSubString(t *testing.T) {
+	var cases = []struct {
+		n        string // input
+		expected string // expected result
+		split	string
+	}{
+		{"tst|100", "tst","|"},
+		{"tst|100", "tst|100",","},
+		{"", "",","},
+		{"|90ss", "","|"},
+	}
+
+	for _, tt := range cases {
+		actual := SubString(tt.n,tt.split)
+		if actual != tt.expected {
+			t.Errorf("SubString(%s,%s): expected %s, actual %s", tt.n,tt.split, tt.expected, actual)
+		}
+	}
+}
+```
