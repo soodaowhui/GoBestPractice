@@ -14,6 +14,9 @@
 
 	> select,switch,case的语法问题
 	
+- [Json](json.md)
+- [函数](func.md)
+
 ### 变量和类型 ####
 
 - [类型转化](TypeTransfer.md)
